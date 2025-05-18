@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myPortfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="color-palette">
+                    <a href="#"><i class="fas fa-palette"></i> Colors</a>
+                    <div class="color-options">
+                        <div class="color-option" data-color="#3498db" style="background-color: #3498db;"></div>
+                        <div class="color-option" data-color="#e74c3c" style="background-color: #e74c3c;"></div>
+                        <div class="color-option" data-color="#2ecc71" style="background-color: #2ecc71;"></div>
+                        <div class="color-option" data-color="#f39c12" style="background-color: #f39c12;"></div>
+                        <div class="color-option" data-color="#9b59b6" style="background-color: #9b59b6;"></div>
+                    </div>
+                </li>
+                <li>
+                    <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun" style="display: none;"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="full-height">
+            <div class="container">
+                <img id="profile-pic" src="image/propic.jpg" alt="" />
+                <h1>Hello, I'm <span class="highlight">Angelo</span></h1>
+                <p class="subtitle">A Computer Science Student</p>
+                <a href="#about" class="btn">About Me</a>  <!-- Updated link to point to #about -->
+            </div>
+        </section>
+    
+        <section id="about" class="full-height">  <!-- About section now comes first -->
+            <div class="container">
+                <h2>About <span class="highlight">Me</span></h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I'm a multidisciplinary designer and developer focused on creating meaningful experiences through clean, functional design.</p>
+                        <p>With over 5 years of experience, I've worked with startups and established companies to bring their digital products to life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="work" class="full-height">
+            <div class="container">
+                <h2><span class="highlight">Dino-Skills</span></h2>
+                <div class="projects">
+                    <!-- Skill 1 -->
+                    <div class="project-card">
+                        <img class="project-image" src="image/coding.jpeg" alt="T-Rex Coding">
+                        <h3>T-Rex Coding</h3>
+                        <p>Writing code with short arms but mighty results</p>
+                        <div class="skill-details">
+                            <span>React</span>
+                            <span>JavaScript</span>
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 2 -->
+                    <div class="project-card">
+                        <img class="project-image" src="image/debug.jpeg" alt="Velociraptor Debugging">
+                        <h3>Velociraptor Debugging</h3>
+                        <p>Hunting down bugs with pack mentality</p>
+                        <div class="skill-details">
+                            <span>Chrome DevTools</span>
+                            <span>Jest</span>
+                            <span>Postman</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill 3 -->
+                    <div class="project-card">
+                        <img class="project-image" src="image/noc.jpeg" alt="Bronto-Scale">
+                        <h3>Midnight Coder</h3>
+                        <p>Debugging at 3AM like a nocturnal raptor</p>
+                        <div class="skill-details">
+                            <span>AWS</span>
+                            <span>Docker</span>
+                            <span>Microservices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="contact" class="full-height">
+    
+            <div class="container">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+                <p>Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+                <form id="contact-form">
+                    <input type="text" placeholder="Name" required />
+                    <input type="email" placeholder="Email" required />
+                    <textarea placeholder="Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; <span id="year"></span> MmyPortfolio. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color palette functionality
+            const colorOptions = document.querySelectorAll('.color-option');
+            const highlightElements = document.querySelectorAll('.highlight');
+            const buttons = document.querySelectorAll('.btn');
+            
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const color = this.getAttribute('data-color');
+                    
+                    // Change all highlight elements
+                    highlightElements.forEach(el => {
+                        el.style.color = color;
+                    });
+                    
+                    // Change buttons
+                    buttons.forEach(btn => {
+                        btn.style.backgroundColor = color;
+                    });
+                    
+                    // You can add more elements to change here
+                    // For example, navbar background, etc.
+                });
+            });
+            
+            // Update year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
